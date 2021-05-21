@@ -1,0 +1,122 @@
+@model TheatreCMS3.Areas.Rent.ViewModels.AllRentalsVM
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ string editName = ViewBag.EditValue; }
+
+@using (Html.BeginForm(editName,"Rentals", null, FormMethod.Post, new { id="beginForm" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="rentals-container">
+        <div class="form-horizontal">
+            <div class="rentals-header">Edit Rental</div>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.RentalId)
+
+            <div class="rental box">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.RentalName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-auto">
+                        @Html.EditorFor(model => model.RentalName, new { htmlAttributes = new { @class = "form-control rentals-form" } })
+                        @Html.ValidationMessageFor(model => model.RentalName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.RentalCost, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-auto">
+                        @Html.EditorFor(model => model.RentalCost, new { htmlAttributes = new { @class = "form-control rentals-form" } })
+                        @Html.ValidationMessageFor(model => model.RentalCost, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FlawsAndDamages, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-auto">
+                        @Html.EditorFor(model => model.FlawsAndDamages, new { htmlAttributes = new { @class = "form-control rentals-form" } })
+                        @Html.ValidationMessageFor(model => model.FlawsAndDamages, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+             </div>
+            
+
+            @if (ViewBag.Value == "TheatreCMS3.Areas.Rent.Models.RentalRoom")
+            {
+                  <div class="rentalRoom box">
+                      @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                      <div class="form-group">
+                          @Html.LabelFor(model => model.RoomNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                          <div class="col-md-auto">
+                              @Html.EditorFor(model => model.RoomNumber, new { htmlAttributes = new { @class = "form-control rentals-form" } })
+                              @Html.ValidationMessageFor(model => model.RoomNumber, "", new { @class = "text-danger" })
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          @Html.LabelFor(model => model.SquareFootage, htmlAttributes: new { @class = "control-label col-md-2" })
+                          <div class="col-md-auto">
+                              @Html.EditorFor(model => model.SquareFootage, new { htmlAttributes = new { @class = "form-control rentals-form" } })
+                              @Html.ValidationMessageFor(model => model.SquareFootage, "", new { @class = "text-danger" })
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          @Html.LabelFor(model => model.MaxOccupancy, htmlAttributes: new { @class = "control-label col-md-2" })
+                          <div class="col-md-auto">
+                              @Html.EditorFor(model => model.MaxOccupancy, new { htmlAttributes = new { @class = "form-control rentals-form" } })
+                              @Html.ValidationMessageFor(model => model.MaxOccupancy, "", new { @class = "text-danger" })
+                          </div>
+                      </div>
+                  </div>
+            }
+             else if (ViewBag.Value == "TheatreCMS3.Areas.Rent.Models.RentalEquipment")
+            {
+                  <div class="rentalEquipment box">
+                      @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                      <div class="form-group">
+                          @Html.LabelFor(model => model.ChokingHazard, htmlAttributes: new { @class = "control-label col-md-2" })
+                          <div class="col-md-auto">
+                              @Html.EditorFor(model => model.ChokingHazard, new { htmlAttributes = new { @class = "form-control rentals-form" } })
+                              @Html.ValidationMessageFor(model => model.ChokingHazard, "", new { @class = "text-danger" })
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          @Html.LabelFor(model => model.SuffocationHazard, htmlAttributes: new { @class = "control-label col-md-2" })
+                          <div class="col-md-auto">
+                              @Html.EditorFor(model => model.SuffocationHazard, new { htmlAttributes = new { @class = "form-control rentals-form" } })
+                              @Html.ValidationMessageFor(model => model.SuffocationHazard, "", new { @class = "text-danger" })
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          @Html.LabelFor(model => model.PurchasePrice, htmlAttributes: new { @class = "control-label col-md-2" })
+                          <div class="col-md-auto">
+                              @Html.EditorFor(model => model.PurchasePrice, new { htmlAttributes = new { @class = "form-control rentals-form" } })
+                              @Html.ValidationMessageFor(model => model.PurchasePrice, "", new { @class = "text-danger" })
+                          </div>
+                      </div>
+                  </div>
+             }
+
+            <center>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-default rentals-button" />
+                        <input type="button" class="btn btn-secondary rentals-returnbutton" value="Back to List" onclick="location.href='@Url.Action("Index")'" />
+                    </div>
+                </div>
+            </center>
+      </div>
+    </div>
+}
+
+@section Scripts {
+  @Scripts.Render("~/bundles/jqueryval")
+}
+
