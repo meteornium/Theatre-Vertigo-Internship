@@ -3,7 +3,7 @@
 Collection of work completed through the C# and .NET Live Project. Completed 4 tasks within the span of two weeks, ranging from implementing code-first database creation to manipulating data displayed on screen depending on what type of "Rental" user had placed. 
 
 ## Task One: Formatting Address and Phone Number
-The first task I completed was properly formatting the theatre's address and phone number at the bottom of the screen. Code was written in such a way to properly format any address and phone number given to it.
+The first task completed was properly formatting the theatre's address and phone number at the bottom of the screen. Code was written in such a way to properly format any address and phone number given to it.
 
 ![image](https://user-images.githubusercontent.com/79771326/123161949-e4f36680-d424-11eb-8194-546d393dafb9.png)
 
